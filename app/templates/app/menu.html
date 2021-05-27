@@ -2,33 +2,26 @@
 {% load static %}
 
 {% block contenido%}
-<table class="table">
+<table class="table table-striped table-hover table-responsive-sm">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">imagen</th>
       </tr>
     </thead>
     <tbody>
+      {% for m in menus%}
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">{{m.id}}</th>
+        <td>{{m.nombre | capfirst}}</td>
+        <td>{{m.ingredientes | title}}</td>
+        {% if m.imagen %}
+        <td><img src="{{ m.imagen.url }}" alt=""></td>
+        {% endif %}
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 
