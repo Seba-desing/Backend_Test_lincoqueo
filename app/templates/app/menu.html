@@ -8,7 +8,7 @@
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
         <th scope="col">Descripcion</th>
-        <th scope="col">imagen</th>
+        <th scope="col">Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +17,9 @@
         <th scope="row">{{m.id}}</th>
         <td>{{m.nombre | capfirst}}</td>
         <td>{{m.ingredientes | title}}</td>
-        {% if m.imagen %}
-        <td><img src="{{ m.imagen.url }}" alt=""></td>
-        {% endif %}
+        <td><a href="{% url 'modificar_menu' m.id %}" class="btn btn-info btn-sm">Modificar</a>
+        <a href="{% url 'eliminar_menu' m.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
